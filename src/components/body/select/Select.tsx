@@ -1,8 +1,15 @@
 import "./Selects.scss"
 
-const Select = () => {
+interface SelectProps {
+    label: string
+}
+
+const Select = (props: SelectProps) => {
     return (
-        <div>sel</div>
+        <div className="select">
+            <input type="radio"></input>
+            <label>{props?.label}</label>
+        </div>
     );
 };
 
