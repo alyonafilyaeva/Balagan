@@ -1,0 +1,25 @@
+.main {
+    &__animation {
+        width: 1159px;
+        height: 367px;
+        background-color: #D9D9D9;
+        margin: 0 140px;
+    }
+
+    &__picture {
+        width: 1159px;
+        height: 507px;
+        background-image: url(../../imgs/box.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        margin: 0 140px;
+
+       img {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 230px;
+        padding-top: 50px;
+       }
+    }
+}

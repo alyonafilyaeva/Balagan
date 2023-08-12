@@ -1,0 +1,26 @@
+.container {
+    padding: 0 140px;
+}
+
+.categories {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &__link {
+        color: #000;
+        font-family: Manrope;
+        font-size: 17px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 24px;
+        /* 141.176% */
+        padding-right: 30px;
+        text-decoration: none;
+
+        &__yet {
+            padding: 0;
+        }
+    }
+}
