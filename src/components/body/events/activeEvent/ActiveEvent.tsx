@@ -3,8 +3,17 @@ import "./ActiveEvent.scss"
 import monetochkaBig from "../../../../imgs/monetochkaBig.png"
 import heart from "../../../../imgs/heart.svg"
 import { YMaps, Map } from '@pbe/react-yandex-maps';
+import { useLocation } from "react-router-dom";
+import { IEvent } from "../../../../models";
 
-const ActiveEvent = () => {
+interface ActiveEventProps {
+    event: IEvent
+}
+
+const ActiveEvent = (props: ActiveEventProps) => {
+    const location = useLocation();
+    let x = location?.state?.coordinate_X
+    let y = location?.state?.coordinate_Y
     return (
         <div className="container">
             <Categories />
@@ -13,10 +22,10 @@ const ActiveEvent = () => {
                     <img src={monetochkaBig} alt="monetochkaBig" />
                     <div className="active__picture__text">
                         <div className="active__picture__text__top">
-                            <div className="active__picture__text__top__name">Монеточка</div>
-                            <div className="active__picture__text__top__date">12 июня · 12:00</div>
-                            <div className="active__picture__text__top__price">300</div>
-                            <div className="active__picture__text__top__place">Свобода, 5 км</div>
+                            <div className="active__picture__text__top__name">{location?.state?.name}</div>
+                            <div className="active__picture__text__top__date">{location?.state?.date.split("T")[0]}</div>
+                            <div className="active__picture__text__top__price">{location?.state?.price}</div>
+                            <div className="active__picture__text__top__place">{location?.state?.place}</div>
                         </div>
                         <div className="active__picture__text__bottom">
                             <button>Купить билет</button>
@@ -27,24 +36,19 @@ const ActiveEvent = () => {
                 <div className="active__description">
                     <h1>О концерте</h1>
                     <p>
-                        Текст о концерте, что там будет, кто выступает, что зацепит слушателя. У меня сосед сверху каждый день передвигает мебель.Сосед справа уже год ремонт <br></br> делает, постоянно что-то долбит и сверлит.Соседи слева, молодожёны, постоянно скандалят, орут на весь дом.Сосед снизу, псих, бьёт молотком по <br></br> батареям.И как мне в таких условиях учиться играть на барабанах?! <br></br>
-                        Текст о концерте, что там будет, кто выступает, что зацепит слушателя. У меня сосед сверху каждый день передвигает мебель.Сосед справа уже год ремонт <br></br> делает, постоянно что-то долбит и сверлит.Соседи слева, молодожёны, постоянно скандалят, орут на весь дом.Сосед снизу, псих, бьёт молотком по <br></br> батареям.И как мне в таких условиях учиться играть на барабанах?! <br></br>
-                        Текст о концерте, что там будет, кто выступает, что зацепит слушателя. У меня сосед сверху каждый день передвигает мебель.Сосед справа уже год ремонт <br></br> делает, постоянно что-то долбит и сверлит.Соседи слева, молодожёны, постоянно скандалят, орут на весь дом.Сосед снизу, псих, бьёт молотком по <br></br> батареям.И как мне в таких условиях учиться играть на барабанах?! <br></br>
+                    {location?.state?.description}
                     </p>
                 </div>
                 <div className="active__address">
                     <h1>Адрес</h1>
                     <YMaps>
                         <div >
-                            <Map defaultState={{ center: [56.822, 60.554], zoom: 15 }} /* className="active__address__map" */ width='100%'
-                                height='371px' />
+                            <Map defaultState={{ center: [+x, +y], zoom: 15,  }} /* className="active__address__map" */ width='100%'
+                                height='371px' 
+                                modules={ [ 'geoObject.addon.balloon', 'geoObject.addon.hint' ] }
+                               />
                         </div>
                     </YMaps>
-                    <div>
-                        <p>Свобода</p>
-                        <p>ул. Черкасская, 12</p>
-                        <p>+7 (343) 328-43-37</p>
-                    </div>
                 </div>
             </div>
         </div>

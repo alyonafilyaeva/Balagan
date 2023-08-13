@@ -8,6 +8,8 @@ import Start from './pages/start/Start';
 import Main from './pages/main/Main';
 import ActiveEvent from './components/body/events/activeEvent/ActiveEvent';
 import Selects from './components/body/select/Selects';
+import Your from './pages/your/Your';
+import Auth from './pages/auth/Auth';
 
 function App() {
   return (
@@ -19,8 +21,10 @@ function App() {
         <Route path="/" element={<Start />} />
         <Route path="/main" element={<Main />} />
         <Route path="/events" element={<EventList />} />
-        <Route path="/event" element={<ActiveEvent />} />
+        <Route path="/event" element={<ActiveEvent event={{}} />} />
         <Route path="/selects" element={<Selects />} />
+        <Route path="/your" element={<Your />} />
+        <Route path="/auth" element={<Auth />} />
         </Routes>
         
         <Footer />

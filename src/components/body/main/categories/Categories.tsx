@@ -1,11 +1,15 @@
 import "./Categories.scss"
 import { NavLink } from "react-router-dom";
+import React, { useState } from 'react';
 
 const Categories = () => {
+    /* let [active, setActive] = useState<IActive>({active: false}) */
+    let [active, setActive] = useState<boolean>(false)
+    console.log(active)
     return (
         <div >
             <div className="categories">
-                <NavLink to="/" className="categories__link">Для вас</NavLink>
+                <NavLink to="/your" className={`categories__link ${active && 'click'}`} onClick={() => setActive(active => !active)}>Для вас</NavLink>
                 <NavLink to="/" className="categories__link">Будут популярны</NavLink>
                 <NavLink to="/" className="categories__link">Кино</NavLink>
                 <NavLink to="/" className="categories__link">Спорт</NavLink>
